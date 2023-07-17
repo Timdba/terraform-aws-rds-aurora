@@ -36,11 +36,11 @@ module "aurora" {
     }
     2 = {
       identifier     = "mysql-static-1"
-      instance_class = "db.r5.2xlarge"
+      instance_class = "db.r5.large"
     }
     3 = {
       identifier     = "mysql-excluded-1"
-      instance_class = "db.r5.xlarge"
+      instance_class = "db.r5.large"
       promotion_tier = 15
     }
   }
