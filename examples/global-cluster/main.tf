@@ -16,11 +16,11 @@ data "aws_availability_zones" "secondary" {
 locals {
   name = "ex-${basename(path.cwd)}"
 
-  primary_region   = "eu-west-1"
+  primary_region   = "us-west-2"
   primary_vpc_cidr = "10.0.0.0/16"
   primary_azs      = slice(data.aws_availability_zones.primary.names, 0, 3)
 
-  secondary_region   = "us-east-1"
+  secondary_region   = "us-east-2"
   secondary_vpc_cidr = "10.1.0.0/16"
   secondary_azs      = slice(data.aws_availability_zones.secondary.names, 0, 3)
 
@@ -37,8 +37,8 @@ locals {
 
 resource "aws_rds_global_cluster" "this" {
   global_cluster_identifier = local.name
-  engine                    = "aurora-postgresql"
-  engine_version            = "14.5"
+  engine                    = "aurora-mysql"
+  engine_version            = "8.0"
   database_name             = "example_db"
   storage_encrypted         = true
 }
